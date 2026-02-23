@@ -27,15 +27,15 @@
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div class="p-5">
                     <p class=" text-[#323B49] text-xl mb-2" >Total</p>
-                    <p class="text-[] h-6 font-bold">0</p>
+                    <p id="totalCount" class="text-[] h-6 font-bold">0</p>
                 </div>
                <div class="p-5">
                     <p class="text-[#323B49] text-xl mb-2">Interview</p>
-                    <p class="text-[#10B981] h-6 font-bold">0</p>
+                    <p id="interviewCount" class="text-[#10B981] h-6 font-bold">0</p>
                 </div>
                 <div class="p-5">
                     <p class="text-[#323B49] text-xl mb-2">Rejected</p>
-                    <p class="text-[#EF4444] h-6 font-bold">0</p>
+                    <p id="rejectedCount" class="text-[#EF4444] h-6 font-bold">0</p>
                 </div>
             </div>
         </div>
@@ -47,13 +47,15 @@
             <p><span>0</span> jobs</p>
         </div>
         <div class="mb-6 ">
-            <button class="bg-[#3B82F6] text-white py-2 px-3 w-20 mr-3 rounded ">All</button>
-            <button class="mr-3 text-[#64748B]">Interview</button>
-            <button class="text-[#64748B]">Rejected</button>
+            <button id="all-tab" class="bg-[#3B82F6] text-white py-2 px-3 w-20 mr-3 rounded">All</button>
+            <button id="interview-tab" class="mr-3 text-[#64748B]">Interview</button>
+            <button id="rejected-tab" class="text-[#64748B]">Rejected</button>
         </div>
-        <div class="cards p-4 space-y-4">
+        <section >
+        <div id="allCards" class="cards p-4 space-y-4">
             <!-- card 1 -->
             <div class="card flex justify-between sm:p-6 ">
+
                 <div class="card-content space-y-5">
                     <div>   
                         <h2 class="card-title text-[#002C5C] font-bold">Mobile First Corp</h2>
@@ -65,17 +67,20 @@
                     <p class="card-details text-[#323B49]"> Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
                         </div>
                     <div class="card-btn space-y-2.5 ">
-                        <button class="mr-2 text-[#10B981] border-2 rounded py-2 px-3 font-semibold sm:mb-2.5">INTERVIEW</button>
-                        <button class="mr-2 text-[#EF4444] border-2 rounded py-2 px-3 font-semibold">REJECTED   </button>
+                        <button class=" interview-btn mr-2 text-[#10B981] border-2 rounded py-2 px-3 font-semibold sm:mb-2.5">INTERVIEW</button>
+                        <button class="rejected-btn mr-2 text-[#EF4444] border-2 rounded py-2 px-3 font-semibold">REJECTED   </button>
                         
                     </div>
                 </div>  
+
                 <div class="card-delete-btn">
                     <button><i class="fa-regular fa-trash-can"></i></button>
-                </div>              
+                </div>  
+
             </div>
             <!-- card 2  -->
             <div class="card flex justify-between sm:p-6 ">
+
                 <div class="card-content space-y-5">
                     <div>   
                         <h2 class="card-title text-[#002C5C] font-bold">WebFlow Agency</h2>
@@ -87,17 +92,20 @@
                         <p class="card-details text-[#323B49]">Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends.</p>
                     </div>
                     <div class="card-btn space-y-2.5">
-                        <button class="mr-2 text-[#10B981] border-2 rounded py-2 px-3 font-semibold">INTERVIEW</button>
-                        <button class="mr-2 text-[#EF4444] border-2 rounded py-2 px-3 font-semibold">REJECTED   </button>
+                        <button class="interview-btn mr-2 text-[#10B981] border-2 rounded py-2 px-3 font-semibold">INTERVIEW</button>
+                        <button class="rejected-btn mr-2 text-[#EF4444] border-2 rounded py-2 px-3 font-semibold">REJECTED   </button>
                         
                     </div>
                 </div>  
+
                 <div class="card-delete-btn">
                     <button><i class="fa-regular fa-trash-can"></i></button>
-                </div>              
+                </div> 
+
             </div>
             <!-- card 3  -->
             <div class="card flex justify-between sm:p-6 ">
+
                 <div class="card-content space-y-5">
                     <div>   
                         <h2 class="card-title text-[#002C5C] font-bold">DataViz Solutions</h2>
@@ -109,17 +117,20 @@
                         <p class="card-details text-[#323B49]">Transform complex data into compelling visualizations. Required skills: D3.js, React, and strong analytical thinking.</p>
                     </div>
                     <div class="card-btn space-y-2.5">
-                        <button class="mr-2 text-[#10B981] border-2 rounded py-2 px-3 font-semibold">INTERVIEW</button>
-                        <button class="mr-2 text-[#EF4444] border-2 rounded py-2 px-3 font-semibold">REJECTED   </button>
+                        <button class="interview-btn mr-2 text-[#10B981] border-2 rounded py-2 px-3 font-semibold">INTERVIEW</button>
+                        <button class="rejected-btn mr-2 text-[#EF4444] border-2 rounded py-2 px-3 font-semibold">REJECTED   </button>
                         
                     </div>
                 </div>  
+
                 <div class="card-delete-btn">
                     <button><i class="fa-regular fa-trash-can"></i></button>
-                </div>              
+                </div>    
+
             </div>
             <!-- card 4  -->
             <div class="card flex justify-between sm:p-6 ">
+
                 <div class="card-content space-y-5">
                     <div>   
                         <h2 class="card-title text-[#002C5C] font-bold">CloudFirst Inc</h2>
@@ -131,17 +142,20 @@
                         <p class="card-details text-[#323B49]">Design and maintain scalable backend systems using Python and AWS. Work with modern DevOps practices and cloud infrastructure.</p>
                     </div>
                     <div class="card-btn space-y-2.5">
-                        <button class="mr-2 text-[#10B981] border-2 rounded py-2 px-3 font-semibold">INTERVIEW</button>
-                        <button class="mr-2 text-[#EF4444] border-2 rounded py-2 px-3 font-semibold">REJECTED   </button>
+                        <button class="interview-btn mr-2 text-[#10B981] border-2 rounded py-2 px-3 font-semibold">INTERVIEW</button>
+                        <button class="rejected-btn mr-2 text-[#EF4444] border-2 rounded py-2 px-3 font-semibold">REJECTED   </button>
                         
                     </div>
                 </div>  
+
                 <div class="card-delete-btn">
                     <button><i class="fa-regular fa-trash-can"></i></button>
-                </div>              
+                </div>  
+
             </div>
             <!-- card 5 -->
             <div class="card flex justify-between sm:p-6 ">
+
                 <div class="card-content space-y-5">
                     <div>   
                         <h2 class="card-title text-[#002C5C] font-bold">Innovation Labs</h2>
@@ -153,17 +167,20 @@
                         <p class="card-details text-[#323B49]">Create beautiful and functional user interfaces for our suite of products. Strong design skills and frontend development expertise required.</p>
                     </div>
                     <div class="card-btn space-y-2.5">
-                        <button class="mr-2 text-[#10B981] border-2 rounded py-2 px-3 font-semibold">INTERVIEW</button>
-                        <button class="mr-2 text-[#EF4444] border-2 rounded py-2 px-3 font-semibold">REJECTED   </button>
+                        <button class="interview-btn mr-2 text-[#10B981] border-2 rounded py-2 px-3 font-semibold">INTERVIEW</button>
+                        <button class="rejected-btn mr-2 text-[#EF4444] border-2 rounded py-2 px-3 font-semibold">REJECTED   </button>
                         
                     </div>
                 </div>  
+
                 <div class="card-delete-btn">
                     <button><i class="fa-regular fa-trash-can"></i></button>
-                </div>              
+                </div>   
+
             </div>
             <!-- card 6 -->
             <div class="card flex justify-between sm:p-6 ">
+
                 <div class="card-content space-y-5">
                     <div>   
                         <h2 class="card-title text-[#002C5C] font-bold">MegaCorp Solutions</h2>
@@ -175,17 +192,20 @@
                         <p class="card-details text-[#323B49]">Build enterprise applications with JavaScript and modern frameworks. We offer competitive compensation, health insurance, and professional development opportunities.</p>
                     </div>
                     <div class="card-btn space-y-2.5">
-                        <button class="mr-2 text-[#10B981] border-2 rounded py-2 px-3 font-semibold">INTERVIEW</button>
-                        <button class="mr-2 text-[#EF4444] border-2 rounded py-2 px-3 font-semibold">REJECTED   </button>
+                        <button class="interview-btn mr-2 text-[#10B981] border-2 rounded py-2 px-3 font-semibold">INTERVIEW</button>
+                        <button class="rejected-btn mr-2 text-[#EF4444] border-2 rounded py-2 px-3 font-semibold">REJECTED   </button>
                         
                     </div>
-                </div>  
+                </div>   
+
                 <div class="card-delete-btn">
                     <button><i class="fa-regular fa-trash-can"></i></button>
-                </div>              
+                </div>     
+
             </div>
             <!-- card 7 -->
             <div class="card flex justify-between sm:p-6 ">
+
                 <div class="card-content space-y-5">
                     <div>   
                         <h2 class="card-title text-[#002C5C] font-bold">StartupXYZ</h2>
@@ -197,17 +217,20 @@
                         <p class="card-details text-[#323B49]">Join our fast-growing startup and work on our core platform. Experience with Node.js and React required. Great benefits and equity package included.</p>
                     </div>
                     <div class="card-btn space-y-2.5">
-                        <button class="mr-2 text-[#10B981] border-2 rounded py-2 px-3 font-semibold">INTERVIEW</button>
-                        <button class="mr-2 text-[#EF4444] border-2 rounded py-2 px-3 font-semibold">REJECTED   </button>
+                        <button class="interview-btn mr-2 text-[#10B981] border-2 rounded py-2 px-3 font-semibold">INTERVIEW</button>
+                        <button class="rejected-btn mr-2 text-[#EF4444] border-2 rounded py-2 px-3 font-semibold">REJECTED   </button>
                         
                     </div>
                 </div>  
+
                 <div class="card-delete-btn">
                     <button><i class="fa-regular fa-trash-can"></i></button>
-                </div>              
+                </div>  
+
             </div>
             <!-- card 8 -->
             <div class="card flex justify-between sm:p-6 ">
+
                 <div class="card-content space-y-5">
                     <div>   
                         <h2 class="card-title text-[#002C5C] font-bold">TechCorp Industries</h2>
@@ -219,18 +242,22 @@
                         <p class="card-details text-[#323B49]">We are looking for an experienced Frontend Developer to build scalable web applications using React and TypeScript. You will work with a talented team on cutting-edge projects.</p>
                     </div>
                     <div class="card-btn space-y-2.5">
-                        <button class="mr-2 text-[#10B981] border-2 rounded py-2 px-3 font-semibold">INTERVIEW</button>
-                        <button class="mr-2 text-[#EF4444] border-2 rounded py-2 px-3 font-semibold">REJECTED   </button>
+                        <button class="interview-btn mr-2 text-[#10B981] border-2 rounded py-2 px-3 font-semibold">INTERVIEW</button>
+                        <button class="rejected-btn mr-2 text-[#EF4444] border-2 rounded py-2 px-3 font-semibold">REJECTED   </button>
                         
                     </div>
                 </div>  
+
                 <div class="card-delete-btn">
                     <button><i class="fa-regular fa-trash-can"></i></button>
-                </div>              
+                </div>     
+
             </div>
             
         </div>
+        </section>
     </main>
     
+    <script src="./script.js"></script>
 </body>
 </html>
