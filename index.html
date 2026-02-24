@@ -51,6 +51,13 @@
             <button id="interview-tab" class="mr-3 text-[#64748B] py-2 px-3 rounded" onclick="toggleStyle('interview-tab')">Interview</button>
             <button id="rejected-tab" class="text-[#64748B] py-2 px-3 rounded" onclick="toggleStyle('rejected-tab')">Rejected</button>
         </div>
+
+        <section id="filtered-section" class="hidden">
+
+        </section>
+
+
+
         <section >
         <div id="allCards" class="cards p-4 space-y-4">
             <!-- card 1 -->
@@ -61,7 +68,7 @@
                         <h2 class="card-title text-[#002C5C] font-bold">Mobile First Corp</h2>
                         <p class="card-subtitle text-[#64748B]">React Native Developer</p>
                     </div>
-                    <p class="text-[#64748B]">  Remote • Full-time • $130,000 - $175,000</p>
+                    <p class="location text-[#64748B]">  Remote • Full-time • $130,000 - $175,000</p>
                     <div>
                     <p class="status py-2 px-3 text-[#002C5C] font-medium">NOT APPLIED</p>
                     <p class="card-details text-[#323B49]"> Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
@@ -86,7 +93,7 @@
                         <h2 class="card-title text-[#002C5C] font-bold">WebFlow Agency</h2>
                         <p class="card-subtitle text-[#64748B]">Web Designer & Developer</p>
                     </div>
-                    <p class="text-[#64748B]">Los Angeles, CA • Part-time •  $80,000 - $120,000</p>
+                    <p class="location text-[#64748B]">Los Angeles, CA • Part-time •  $80,000 - $120,000</p>
                     <div>
                         <p class="status py-2 px-3 text-[#002C5C] font-medium">NOT APPLIED</p>
                         <p class="card-details text-[#323B49]">Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends.</p>
@@ -111,7 +118,7 @@
                         <h2 class="card-title text-[#002C5C] font-bold">DataViz Solutions</h2>
                         <p class="card-subtitle text-[#64748B]">Data Visualization Specialist</p>
                     </div>
-                    <p class="text-[#64748B]">Boston, MA full-time •  $125,000 - $165,000</p>
+                    <p class="location text-[#64748B]">Boston, MA full-time •  $125,000 - $165,000</p>
                     <div>
                         <p class="status py-2 px-3 text-[#002C5C] font-medium">NOT APPLIED</p>
                         <p class="card-details text-[#323B49]">Transform complex data into compelling visualizations. Required skills: D3.js, React, and strong analytical thinking.</p>
@@ -136,7 +143,7 @@
                         <h2 class="card-title text-[#002C5C] font-bold">CloudFirst Inc</h2>
                         <p class="card-subtitle text-[#64748B]">Backend Developer</p>
                     </div>
-                    <p class="text-[#64748B]">Seattle, WA • Full-time • $140,000 - $190,000</p>
+                    <p class="location text-[#64748B]">Seattle, WA • Full-time • $140,000 - $190,000</p>
                     <div>
                         <p class="status py-2 px-3 text-[#002C5C] font-medium">NOT APPLIED</p>
                         <p class="card-details text-[#323B49]">Design and maintain scalable backend systems using Python and AWS. Work with modern DevOps practices and cloud infrastructure.</p>
@@ -161,7 +168,7 @@
                         <h2 class="card-title text-[#002C5C] font-bold">Innovation Labs</h2>
                         <p class="card-subtitle text-[#64748B]">UI/UX Engineer</p>
                     </div>
-                    <p class="text-[#64748B]">Austin, TX • Full-time • $110,000 - $150,000</p>
+                    <p class="location text-[#64748B]">Austin, TX • Full-time • $110,000 - $150,000</p>
                     <div>
                         <p class="status py-2 px-3 text-[#002C5C] font-medium">NOT APPLIED</p>
                         <p class="card-details text-[#323B49]">Create beautiful and functional user interfaces for our suite of products. Strong design skills and frontend development expertise required.</p>
@@ -186,7 +193,7 @@
                         <h2 class="card-title text-[#002C5C] font-bold">MegaCorp Solutions</h2>
                         <p class="card-subtitle text-[#64748B]">JavaScript Developer</p>
                     </div>
-                    <p class="text-[#64748B]">New York, NY • Full-time • $130,000 - $170,00</p>
+                    <p class="location text-[#64748B]">New York, NY • Full-time • $130,000 - $170,00</p>
                     <div>
                         <p class="status py-2 px-3 text-[#002C5C] font-medium">NOT APPLIED</p>
                         <p class="card-details text-[#323B49]">Build enterprise applications with JavaScript and modern frameworks. We offer competitive compensation, health insurance, and professional development opportunities.</p>
@@ -211,7 +218,7 @@
                         <h2 class="card-title text-[#002C5C] font-bold">StartupXYZ</h2>
                         <p class="card-subtitle text-[#64748B]">Full Stack Engineer</p>
                     </div>
-                    <p class="text-[#64748B]">Remote • Full-time • $120,000 - $160,000</p>
+                    <p class="location text-[#64748B]">Remote • Full-time • $120,000 - $160,000</p>
                     <div>
                         <p class="status py-2 px-3 text-[#002C5C] font-medium">NOT APPLIED</p>
                         <p class="card-details text-[#323B49]">Join our fast-growing startup and work on our core platform. Experience with Node.js and React required. Great benefits and equity package included.</p>
@@ -236,7 +243,7 @@
                         <h2 class="card-title text-[#002C5C] font-bold">TechCorp Industries</h2>
                         <p class="card-subtitle text-[#64748B]">Senior Frontend Developer</p>
                     </div>
-                    <p class="text-[#64748B]">San Francisco, CA • Full-time • $130,000 - $175,000</p>
+                    <p class="location text-[#64748B]">San Francisco, CA • Full-time • $130,000 - $175,000</p>
                     <div>
                         <p class="status py-2 px-3 text-[#002C5C] font-medium">NOT APPLIED</p>
                         <p class="card-details text-[#323B49]">We are looking for an experienced Frontend Developer to build scalable web applications using React and TypeScript. You will work with a talented team on cutting-edge projects.</p>
