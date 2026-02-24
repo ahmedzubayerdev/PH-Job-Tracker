@@ -40,6 +40,7 @@ function toggleStyle(id){
     selected.classList.add('bg-[#3B82F6]', 'text-white')
 }
 
+// main events 
 mainContainer.addEventListener('click', function(event){
     if(event.target.classList.contains("interview-btn")){
 
@@ -107,5 +108,43 @@ mainContainer.addEventListener('click', function(event){
     }
     
 })
+
+
+// rendering function interview 
+
+function renderInterview(){
+    filterSection.innerHTML = '';
+
+    for(let interview of interviewList){
+
+        let div = document.createComment('div');
+        div.className = "card flex justify-between sm:p-6";
+        div.innerHTML = `
+
+              <div class="card-content space-y-5">
+                    <div>   
+                        <h2 class="card-title text-[#002C5C] font-bold">${interview.cardTitle}</h2>
+                        <p class="card-subtitle text-[#64748B]">${interview.cardSubTitle}</p>
+                    </div>
+                    <p class="location text-[#64748B]">${interview.location}</p>
+                    <div>
+                    <p class="status py-2 px-3 text-[#002C5C] font-medium">${interview.status}</p>
+                    <p class="card-details text-[#323B49]">${interview.cardDetails}</p>
+                        </div>
+                    <div class="card-btn space-y-2.5 ">
+                        <button class=" interview-btn mr-2 text-[#10B981] border-2 rounded py-2 px-3 font-semibold sm:mb-2.5">INTERVIEW</button>
+                        <button class="rejected-btn mr-2 text-[#EF4444] border-2 rounded py-2 px-3 font-semibold">REJECTED   </button>
+                        
+                    </div>
+                </div>  
+
+                <div class="card-delete-btn">
+                    <button><i class="fa-regular fa-trash-can"></i></button>
+                </div> 
+        
+        `
+        filterSection.appendChild(div);
+    }
+};
 
 
