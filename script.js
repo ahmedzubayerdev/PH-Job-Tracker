@@ -1,4 +1,4 @@
-// selecting 6+6
+// selecting 
 let interviewList = [];
 let rejectedList = [];
 let currentStatus = 'all-tab';
@@ -6,6 +6,7 @@ let currentStatus = 'all-tab';
 let totalCount = document.getElementById("totalCount");
 let interviewCount = document.getElementById("interviewCount");
 let rejectedCount = document.getElementById("rejectedCount");
+let jobCount = document.getElementById('job-count')
 const allTab = document.getElementById("all-tab")
 const interviewTab = document.getElementById("interview-tab")
 const rejectedTab = document.getElementById("rejected-tab")
@@ -13,13 +14,12 @@ const allCards = document.getElementById("allCards")
 const mainContainer = document.querySelector("main");
 const filterSection = document.getElementById('filtered-section')
 
-
-
 // dashboard count 
 function calculateCount(){
     totalCount.innerText = allCards.children.length;
     interviewCount.innerText = interviewList.length;
     rejectedCount.innerText = rejectedList.length;
+    jobCount.innerText = allCards.children.length;
 }
 
 calculateCount();
@@ -36,24 +36,47 @@ function toggleStyle(id){
     rejectedTab.classList.add('text-[#64748B]');
 
     const selected = document.getElementById(id);
-    
+
     selected.classList.add('bg-[#3B82F6]', 'text-white')
+
+    
+
+    currentStatus = id;
+    
+
+
+    if (id == 'interview-tab') {
+        allCards.classList.add('hidden');
+        filterSection.classList.remove('hidden')
+        renderInterview();
+    } else if (id == 'all-tab') {
+        allCards.classList.remove('hidden');
+        filterSection.classList.add('hidden')
+    } else if (id == 'rejected-tab') {
+        allCards.classList.add('hidden');
+        filterSection.classList.remove('hidden')
+        renderRejected();
+    }
 }
 
 // main events 
 mainContainer.addEventListener('click', function(event){
     if(event.target.classList.contains("interview-btn")){
 
-        const parentNode = event.target.parentNode.parentNode;
-        const cardTitle = document.querySelector('.card-title').innerText;
-        const cardSubTitle = document.querySelector('.card-subtitle').innerText;
-        const location = document.querySelector('.location').innerText;
-        const status = document.querySelector('.status').innerText;
-        const cardDetails = document.querySelector('.card-details').innerText;
+        // const parentNode = event.target.parentNode.parentNode;
+        const parentNode = event.target.closest('.card');
+        const cardTitle = parentNode.querySelector('.card-title').innerText;
+        const cardSubTitle = parentNode.querySelector('.card-subtitle').innerText;
+        const location = parentNode.querySelector('.location').innerText;
+        const status = parentNode.querySelector('.status').innerText;
+        const cardDetails = parentNode.querySelector('.card-details').innerText;
 
-        parentNode.querySelector(".status").innerText = "interview"
+        parentNode.querySelector(".status").innerText = "interview";
 
-        const cardInfo = {
+        // allCards.removeChild(parentNode);
+        parentNode.remove();
+
+        let cardInfo = {
             cardTitle,
             cardSubTitle, 
             location, 
@@ -61,31 +84,36 @@ mainContainer.addEventListener('click', function(event){
             cardDetails
         }
 
-        const cardExist = interviewList.find(item => item.cardTitle == cardInfo.cardTitle)
+        const cardExist = interviewList.find(item => item.cardTitle == cardInfo.cardTitle);
 
         if (!cardExist) {
             interviewList.push(cardInfo)
         }
 
-        rejectedList = rejectedList.filter(item => item.cardTitle != cardInfo.cardTitle)
+        rejectedList = rejectedList.filter(item => item.cardTitle != cardInfo.cardTitle);
 
         if (currentStatus == 'interview-tab') {
-            renderRejected()
+            renderInterview()
         }
+        // toggleStyle('interview-tab');
         calculateCount();
 
     }else if(event.target.classList.contains("rejected-btn")){
 
-        const parentNode = event.target.parentNode.parentNode;
-        const cardTitle = document.querySelector('.card-title').innerText;
-        const cardSubTitle = document.querySelector('.card-subtitle').innerText;
-        const location = document.querySelector('.location').innerText;
-        const status = document.querySelector('.status').innerText;
-        const cardDetails = document.querySelector('.card-details').innerText;
+        // const parentNode = event.target.parentNode.parentNode;
+        const parentNode = event.target.closest('.card');
+        const cardTitle = parentNode.querySelector('.card-title').innerText;
+        const cardSubTitle = parentNode.querySelector('.card-subtitle').innerText;
+        const location = parentNode.querySelector('.location').innerText;
+        const status = parentNode.querySelector('.status').innerText;
+        const cardDetails = parentNode.querySelector('.card-details').innerText;
 
-        parentNode.querySelector(".status").innerText = "rejected"
+        parentNode.querySelector(".status").innerText = "rejected";
 
-        const cardInfo = {
+        // allCards.removeChild(parentNode);
+        parentNode.remove();
+
+        let cardInfo = {
             cardTitle,
             cardSubTitle, 
             location, 
@@ -102,10 +130,36 @@ mainContainer.addEventListener('click', function(event){
         interviewList = interviewList.filter(item => item.cardTitle != cardInfo.cardTitle)
 
         if (currentStatus == "rejected-tab") {
-            renderInterview();
+            renderRejected();
         }
+        // toggleStyle('rejected-tab');
         calculateCount();
+    }else if (event.target.closest('.card-delete-btn')) {
+
+    const parentNode = event.target.closest('.card');
+    const cardTitle = parentNode.querySelector('.card-title').innerText;
+
+    // Remove from interview list
+    interviewList = interviewList.filter(item => item.cardTitle !== cardTitle);
+
+    // Remove from rejected list
+    rejectedList = rejectedList.filter(item => item.cardTitle !== cardTitle);
+
+    // Remove from DOM
+    parentNode.remove();
+
+    calculateCount();
+
+    // Re-render if needed (for empty message)
+    if (currentStatus === 'interview-tab') {
+        renderInterview();
+    } else if (currentStatus === 'rejected-tab') {
+        renderRejected();
     }
+}
+
+
+
     
 })
 
@@ -115,9 +169,19 @@ mainContainer.addEventListener('click', function(event){
 function renderInterview(){
     filterSection.innerHTML = '';
 
+    if (interviewList.length === 0) {
+    filterSection.innerHTML = `
+        <p class="text-center text-gray-500 font-semibold py-10">
+            <img src="./jobs.png" alt="No Jobs" class="w-40 opacity-70 mx-auto">
+            No jobs available
+        </p>
+    `;
+    return;
+}
+
     for(let interview of interviewList){
 
-        let div = document.createComment('div');
+        let div = document.createElement('div');
         div.className = "card flex justify-between sm:p-6";
         div.innerHTML = `
 
@@ -139,7 +203,7 @@ function renderInterview(){
                 </div>  
 
                 <div class="card-delete-btn">
-                    <button><i class="fa-regular fa-trash-can"></i></button>
+                    <button class=" p-2.5 border-2 rounded-[50%]"><i class="fa-regular fa-trash-can"></i></button>
                 </div> 
         
         `
@@ -151,9 +215,19 @@ function renderInterview(){
 function renderRejected(){
     filterSection.innerHTML = '';
 
+    if (rejectedList.length === 0) {
+    filterSection.innerHTML = `
+        <p class="text-center text-gray-500 font-semibold py-10">
+            <img src="./jobs.png" alt="No Jobs" class="w-40 opacity-70 mx-auto">
+            No jobs available
+        </p>
+    `;
+    return;
+}
+
     for(let rejected of rejectedList){
 
-        let div = document.createComment('div');
+        let div = document.createElement('div');
         div.className = "card flex justify-between sm:p-6";
         div.innerHTML = `
 
@@ -175,7 +249,7 @@ function renderRejected(){
                 </div>  
 
                 <div class="card-delete-btn">
-                    <button><i class="fa-regular fa-trash-can"></i></button>
+                    <button class=" p-2.5 border-2 rounded-[50%]"><i class="fa-regular fa-trash-can"></i></button>
                 </div> 
         
         `
