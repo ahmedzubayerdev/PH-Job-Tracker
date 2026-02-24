@@ -1,7 +1,7 @@
 // selecting 6+6
 let interviewList = [];
 let rejectedList = [];
-let currentStatus = 'all';
+let currentStatus = 'all-tab';
 
 let totalCount = document.getElementById("totalCount");
 let interviewCount = document.getElementById("interviewCount");
@@ -70,6 +70,38 @@ mainContainer.addEventListener('click', function(event){
 
         if (currentStatus == 'interview-tab') {
             renderRejected()
+        }
+        calculateCount();
+
+    }else if(event.target.classList.contains("rejected-btn")){
+
+        const parentNode = event.target.parentNode.parentNode;
+        const cardTitle = document.querySelector('.card-title').innerText;
+        const cardSubTitle = document.querySelector('.card-subtitle').innerText;
+        const location = document.querySelector('.location').innerText;
+        const status = document.querySelector('.status').innerText;
+        const cardDetails = document.querySelector('.card-details').innerText;
+
+        parentNode.querySelector(".status").innerText = "rejected"
+
+        const cardInfo = {
+            cardTitle,
+            cardSubTitle, 
+            location, 
+            status: "rejected", 
+            cardDetails
+        }
+
+        const cardExist = rejectedList.find(item => item.cardTitle == cardInfo.cardTitle);
+
+        if (!cardExist) {
+            rejectedList.push(cardInfo);
+        }
+
+        interviewList = interviewList.filter(item => item.cardTitle != cardInfo.cardTitle)
+
+        if (currentStatus == "rejected-tab") {
+            renderInterview();
         }
         calculateCount();
     }
